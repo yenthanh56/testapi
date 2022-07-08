@@ -8,17 +8,30 @@ const bodyParser = require("body-parser");
 // const authRoute = require("./Router/auth");
 // const userRoute = require("./Router/user");
 const router = require("./Router/index");
-dotenv.config({ path: __dirname + "/.env" });
+dotenv.config({ path: "ENV_FILENAME" });
 // const PORT = process.env.PORT || 3000;
 const app = express();
 
-mongoose.connect(
-	process.env.MONGOODB_URL,
+// mongoose.connect(
+// 	process.env.MONGOODB_URL,
 
-	() => {
-		console.log("Connect DB");
-	}
-);
+// 	() => {
+// 		console.log("Connect DB");
+// 	}
+// );
+
+mongoose
+	.connect(process.env.MONGOODB_URL, {
+		useNewUrlParser: true,
+		useCreateIndex: true,
+		useUnifiedTopology: true,
+	})
+	.then(() => {
+		console.log("Connected to Mongo!");
+	})
+	.catch((err) => {
+		console.error("Error connecting to Mongo", err);
+	});
 
 app.use(cors());
 app.use(cookieParser());
