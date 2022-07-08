@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 // const authRoute = require("./Router/auth");
 // const userRoute = require("./Router/user");
 const router = require("./Router/index");
-dotenv.config({ path: "./config/.env" });
+dotenv.config();
 // const PORT = process.env.PORT || 3000;
 const app = express();
 
