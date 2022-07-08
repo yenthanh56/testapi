@@ -36,3 +36,4 @@ app.listen(process.env.PORT || 3000, function () {
 		app.settings.env
 	);
 });
+console.log("Database_URL", process.env.MONGOODB_URL);
