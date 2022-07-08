@@ -4,20 +4,31 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 // const authRoute = require("./Router/auth");
 // const userRoute = require("./Router/user");
 const router = require("./Router/index");
-dotenv.config();
+dotenv.config({ path: "./config/.env" });
 // const PORT = process.env.PORT || 3000;
 const app = express();
 
-mongoose.connect(process.env.MONGOODB_URL, () => {
-	console.log("Connect DB");
-});
+mongoose.connect(
+	process.env.MONGOODB_URL,
+	{
+		useCreateIndex: true,
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	},
+	() => {
+		console.log("Connect DB");
+	}
+);
 
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: "false" }));
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
 	return res.json({ message: "welcome" });
