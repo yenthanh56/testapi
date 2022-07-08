@@ -14,11 +14,7 @@ const app = express();
 
 mongoose.connect(
 	process.env.MONGOODB_URL,
-	{
-		useCreateIndex: true,
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	},
+
 	() => {
 		console.log("Connect DB");
 	}
