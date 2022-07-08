@@ -25,6 +25,10 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+	return res.json({ message: "welcome" });
+});
+
 // ROUTES
 app.use("/v1/auth", authRoute);
 app.use("/v1/user", userRoute);
