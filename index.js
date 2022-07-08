@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const authRoute = require("./Router/auth");
 const userRoute = require("./Router/user");
 dotenv.config();
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 const app = express();
 
 mongoose.connect(
@@ -33,6 +33,13 @@ app.get("/", (req, res) => {
 app.use("/v1/auth", authRoute);
 app.use("/v1/user", userRoute);
 
-app.listen(PORT, () => {
-	console.log(`Example app listening on PORT ${PORT}`);
+// app.listen(PORT, () => {
+// 	console.log(`Example app listening on PORT ${PORT}`);
+// });
+app.listen(process.env.PORT || 3000, function () {
+	console.log(
+		"Express server listening on port %d in %s mode",
+		this.address().port,
+		app.settings.env
+	);
 });
