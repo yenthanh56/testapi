@@ -4,8 +4,9 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const authRoute = require("./Router/auth");
-const userRoute = require("./Router/user");
+// const authRoute = require("./Router/auth");
+// const userRoute = require("./Router/user");
+const router = require("./Router/index");
 dotenv.config();
 // const PORT = process.env.PORT || 3000;
 const app = express();
@@ -26,9 +27,9 @@ app.get("/v1/abc", (req, res) => {
 });
 
 // ROUTES
-app.get("/v1/auth", authRoute);
-app.get("/v1/user", userRoute);
-
+// app.get("/v1/auth", authRoute);
+// app.get("/v1/user", userRoute);
+router(app);
 // app.listen(PORT, () => {
 // 	console.log(`Example app listening on PORT ${PORT}`);
 // });
