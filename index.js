@@ -10,9 +10,8 @@ dotenv.config();
 // const PORT = process.env.PORT || 3000;
 const app = express();
 
-mongoose.connect(process.env.MONGOODB_URL, {
-	useUnifiedTopology: true,
-	useNewUrlParser: true,
+mongoose.connect(process.env.MONGOODB_URL, () => {
+	console.log("Connect DB");
 });
 
 app.use(cors());
@@ -20,6 +19,9 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.get("/", (req, res) => {
+	return res.json({ message: "welcome" });
+});
+app.get("/v1/abc", (req, res) => {
 	return res.json({ message: "welcome" });
 });
 
