@@ -10,9 +10,16 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-mongoose.connect(process.env.MONGOODB_URL, () => {
-	console.log("Connect DB");
-});
+mongoose.connect(
+	process.env.MONGOODB_URL,
+	{
+		useUnifiedTopology: true,
+		useNewUrlParser: true,
+	},
+	() => {
+		console.log("Connect DB");
+	}
+);
 
 app.use(cors());
 app.use(cookieParser());
