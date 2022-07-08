@@ -26,8 +26,8 @@ app.get("/v1/abc", (req, res) => {
 });
 
 // ROUTES
-app.use("/v1/auth", authRoute);
-app.use("/v1/user", userRoute);
+app.get("/v1/auth", authRoute);
+app.get("/v1/user", userRoute);
 
 // app.listen(PORT, () => {
 // 	console.log(`Example app listening on PORT ${PORT}`);
@@ -39,4 +39,3 @@ app.listen(process.env.PORT || 3000, function () {
 		app.settings.env
 	);
 });
-console.log("Database_URL", process.env.MONGOODB_URL);
